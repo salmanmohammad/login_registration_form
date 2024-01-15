@@ -1,6 +1,6 @@
 ### Creating the Database
 
-Create database "login" and create table "members" :
+Create database "login" and create table "users" :
 
 ```sql
 CREATE DATABASE `login`;
