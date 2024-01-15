@@ -1,0 +1,68 @@
+body {
+  padding-bottom: 40px;
+  background-color: #fff;
+}
+
+.form-signin {
+  max-width: 330px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .form-signin-heading{
+  color: white;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin .btn {
+  margin-bottom: 10px;
+}
+
+input{
+  margin-bottom: 15px;
+}
+label, p{
+  color:white
+}
+
+.bg_image{
+     background-image: url(../images/bg_image.jpg);
+    background-size: auto;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+/* Full height */
+    height: 110%;
+
+  /* Center and scale the image nicely */
+    position: absolute;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-size: cover;
+}
