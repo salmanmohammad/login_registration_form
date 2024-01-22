@@ -5,7 +5,7 @@
     header("location:index.php");
   }
   
-require('header.php'); 
+require('common/header.php'); 
 ?> 
 <div class="login_form_wrapper"> 
   <div id="message"></div> 
@@ -19,4 +19,4 @@ require('header.php');
 </div>
 </div> <!-- /container -->
 
-<?php require('footer.php'); ?>
+<?php require('common/footer.php'); ?>

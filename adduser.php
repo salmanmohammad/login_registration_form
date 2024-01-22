@@ -5,7 +5,7 @@ if(isset($_SESSION['username'])){
     header("location:index.php");
   }
 
-require('header.php'); 
+require('common/header.php'); 
 ?>
   <div id="message"></div>
   <form class="form-signin" name="form1" id="signup_form" method="post" enctype="multipart/form-data">
@@ -24,5 +24,5 @@ require('header.php');
     <p class="action_links">Already have account? <a href="login.php">Signin!</a></p>
   </form>   
 <?php 
-require('footer.php'); 
+require('common/footer.php'); 
 ?>
