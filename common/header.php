@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Login</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="css/bootstrap.css?id=1" rel="stylesheet" media="screen">
