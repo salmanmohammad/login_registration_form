@@ -23,17 +23,17 @@ $("#signup").click(function(e){
       $("#message").html(prepareAlert("Please enter all required fields"));
       return false;
     }
+    else if (!isEmail(email)) {
+      $("#signup").prop('disabled', false);
+
+      $('#message').html(prepareAlert("Please provide valid email address"));
+      return false;
+    }
     //Check password strength
     else if (!checkPasswordStrength(password)) {
       $("#signup").prop('disabled', false);
 
       $('#message').html(prepareAlert("Password must alteast 6 character long and must contain at least 1 capital letter,\n\n1 small letter, 1 number and 1 special character.\n\nFor special characters you can pick one of these -,(,!,@,#,$,),%,<,>"));
-      return false;
-    }
-    else if (!isEmail(email)) {
-      $("#signup").prop('disabled', false);
-
-      $('#message').html(prepareAlert("Please provide valid email address"));
       return false;
     }
     else if (password != repwd) {
@@ -58,13 +58,13 @@ $("#signup").click(function(e){
 
           if(data.success == 1 ) {
             $("html, body").animate({ scrollTop: 0 }, "slow");
-            $("#message").html(prepareAlert("data.message"));
+            $("#message").html(prepareAlert(data.message, 1));
             setTimeout(() => { window.location="login.php" }, 2000);
           }
           else {
             $("#signup").prop('disabled', false);
             $("html, body").animate({ scrollTop: 0 }, "slow");
-            $("#message").html(prepareAlert("data.message"));
+            $("#message").html(prepareAlert(data.message));
           }
         },
         error: function()
@@ -85,7 +85,7 @@ $("#signup").click(function(e){
 });
 
 //Compare password
-$('#retypepwd').on('keyup', function () {
+$('#retypepwd').blur(function () {
     if ($(this).val() == $('#password').val()) {
         $('#message').html('');
         return true;
@@ -159,9 +159,11 @@ function isEmail(email) {
   return regex.test(email);
 }
 
-function prepareAlert(message)
+function prepareAlert(message, success=0)
 {
-  return "<div class='alert alert-danger alert-dismissible'>\
+  alertType = (success == 1) ? "alert-success" : "alert-danger";
+
+  return "<div class='alert "+alertType+" alert-dismissible'>\
   <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>\
   "+message+"</div>";
 }

@@ -3,7 +3,7 @@ $(document).ready(function(){
   $("#login").click(function(){
 
     var username = $("#username").val();
-    var password = $("#password").val();
+    var password = $("#login_password").val();
     
     if((username == "") || (password == "")) {
       $("#message").html(prepareAlert("Please enter a username and a password"));
