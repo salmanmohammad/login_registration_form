@@ -7,6 +7,7 @@ if(isset($_SESSION['username'])){
 
 require('header.php'); 
 ?>
+  <div id="message"></div>
   <form class="form-signin" name="form1" id="signup_form" method="post" enctype="multipart/form-data">
     <h2 class="form-signin-heading">Create Account</h2>
     <label>Username <span style="color:red">*</span></label>

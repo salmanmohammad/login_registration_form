@@ -47,7 +47,7 @@ $("#signup").click(function(e){
       let formData = new FormData(document.getElementById('signup_form'));
       $.ajax({
         type: "POST",
-        url: "createuser.php",
+        url: "ajax/createuser.php",
         enctype: "multipart/form-data",
         dataType: "JSON",
         processData: false,

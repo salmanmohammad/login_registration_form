@@ -6,7 +6,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <!-- The AJAX login script -->
-    <script src="js/login.js?id12345"></script>
-    <script src="js/create.js?time=23"></script>
+    <script src="js/login.js?id=12"></script>
+    <script src="js/create.js?id=12"></script>
   </body>
 </html>

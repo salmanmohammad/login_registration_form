@@ -11,7 +11,7 @@ $(document).ready(function(){
     else {
       $.ajax({
         type: "POST",
-        url: "checklogin.php",
+        url: "ajax/checklogin.php",
         data: "username="+username+"&password="+password,
         success: function(html){ 
           console.log(html);   
