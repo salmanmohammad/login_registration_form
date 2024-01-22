@@ -1,18 +1,18 @@
 $(document).ready(function(){
     
-  $("#submit").click(function(){
+  $("#login").click(function(){
 
-    var username = $("#myusername").val();
-    var password = $("#mypassword").val();
+    var username = $("#username").val();
+    var password = $("#password").val();
     
     if((username == "") || (password == "")) {
-      $("#message").html("<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Please enter a username and a password</div>");
+      $("#message").html(prepareAlert("Please enter a username and a password"));
     }
     else {
       $.ajax({
         type: "POST",
         url: "checklogin.php",
-        data: "myusername="+username+"&mypassword="+password,
+        data: "username="+username+"&password="+password,
         success: function(html){ 
           console.log(html);   
           if(html=='true') {
@@ -31,3 +31,12 @@ $(document).ready(function(){
     return false;
   });
 });
+
+
+
+function prepareAlert(message)
+{
+  return "<div class='alert alert-danger alert-dismissible'>\
+  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>\
+  "+message+"</div>";
+}

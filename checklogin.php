@@ -3,21 +3,21 @@
 	ob_start();
 	session_start();
 	
-	require 'db_actions.php';
+	require 'dbactions.php';
 
-	$db_action = new db_actions();
+	$dbaction = new dbactions();
 
-	$myemail = isset($_POST['myusername']) ? $_POST['myusername'] : '';
-	// Define $myusername and $mypassword 
-	$mypassword = isset($_POST['mypassword']) ? $_POST['mypassword'] : ''; 
-	// To protect MySQL injection
-	$result = $db_action->checkLogin($myemail, $mypassword);
+	$username = isset($_POST['username']) ? $_POST['username'] : '';
+	$password = isset($_POST['password']) ? $_POST['password'] : ''; 
+	
+
+	$result = $dbaction->checkLogin($username, $password);
 
 	// If result matched $myusername and $mypassword, table row must be 1 row
 	if($result['success'] == 'true'){
 		// Register $myusername, $mypassword and print "true"
 		$_SESSION['username'] = $result['row']['username'];
-		$_SESSION['password'] = 'mypassword';
+		$_SESSION['password'] = 'password';
 		$_SESSION['profile_image'] = $result['row']['profile_image'];
 
 		echo "<script> window.location='index.php'; </script>";	

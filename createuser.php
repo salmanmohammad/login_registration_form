@@ -1,14 +1,14 @@
 <?php
 
 	header('Content-Type: application/json');
-	require 'db_actions.php';
+	require 'dbactions.php';
 
-	$db_action = new db_actions();
+	$db_action = new dbactions();
 
 	// Define $myusername and $mypassword 
-	$myusername = $_POST['myusername']; 
-	$mypassword = $_POST['mypassword']; 
-	$myemail = $_POST['myemail']; 
+	$myusername = $_POST['username']; 
+	$mypassword = $_POST['password']; 
+	$myemail = $_POST['email']; 
 	
 	// To protect MySQL injection
 	$myusername = stripslashes($myusername);
@@ -18,7 +18,7 @@
 	$count=$db_action->checkUserExist($myemail);
 
 	if($count != 0){
-		echo json_encode(array("success"=> 0, "message" => "Email exist"));
+		echo json_encode(array("success"=> 0, "message" => "User with email already exist"));
 		exit;
 	}
 	else {
@@ -89,7 +89,6 @@
 				exit;
 			}
 		}
-   
 }
 
 ?>

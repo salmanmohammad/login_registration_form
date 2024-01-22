@@ -1,17 +1,46 @@
 $(document).ready(function(){
     
-  $("#submit").click(function(e){
+  //Form submit process
+$("#signup").click(function(e){
+
+    document.getElementById("signup").disabled = true;
 
     e.preventDefault();
 
-    var username = $("#myusername").val();
-    var password = $("#mypassword").val();
-    var email = $("#myemail").val();
+    var username = $("#username").val();
+    var password = $("#password").val();
+    var email = $("#email").val();
     var repwd = $("#retypepwd").val();
-    
-    if((email == "") || (password == "") || (username == "") ) {
-      
-      $("#message").html("<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Please enter all the fields</div>");
+    var profile = $("#profile").val();
+
+    //Scroll to top of form
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+
+    //Check required fields
+    if((email == "") || (password == "") || (username == "")  || (profile == "")) {
+      $("#signup").prop('disabled', false);
+
+      $("#message").html(prepareAlert("Please enter all required fields"));
+      return false;
+    }
+    //Check password strength
+    else if (!checkPasswordStrength(password)) {
+      $("#signup").prop('disabled', false);
+
+      $('#message').html(prepareAlert("Password must alteast 6 character long and must contain at least 1 capital letter,\n\n1 small letter, 1 number and 1 special character.\n\nFor special characters you can pick one of these -,(,!,@,#,$,),%,<,>"));
+      return false;
+    }
+    else if (!isEmail(email)) {
+      $("#signup").prop('disabled', false);
+
+      $('#message').html(prepareAlert("Please provide valid email address"));
+      return false;
+    }
+    else if (password != repwd) {
+      $("#signup").prop('disabled', false);
+
+      $('#message').html(prepareAlert("Password does not match!"));
+      return false;
     }
     else {
       let frm = $('#signup_form').val();
@@ -25,21 +54,28 @@ $(document).ready(function(){
         contentType: false,
         data: formData,
         success: function(data){  
-          console.log(data);
+          $("#signup").prop('disabled', false);
+
           if(data.success == 1 ) {
-            $("#message").html("<div class=\"alert alert-success alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>"+data.message+"</div>");
-            setTimeout(() => { window.location="main_login.php" }, 2000);
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            $("#message").html(prepareAlert("data.message"));
+            setTimeout(() => { window.location="login.php" }, 2000);
           }
           else {
-            $("#message").html("<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>"+data.message+"</div>");
+            $("#signup").prop('disabled', false);
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            $("#message").html(prepareAlert("data.message"));
           }
         },
         error: function()
         {
-          
+            $("#signup").prop('disabled', false);
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            $("#message").html(prepareAlert("Error Occured. Please try again"));
         },
         beforeSend:function()
         {
+          $("#signup").prop('disabled', true);
           $("#message").html("<p class='text-center'><img src='images/ajax-loader.gif'></p>");
         }
       });
@@ -47,17 +83,85 @@ $(document).ready(function(){
     return false;
   });
 });
+
+//Compare password
 $('#retypepwd').on('keyup', function () {
-  console.log($(this).val() +" = " +$('#mypassword').val());
-    if ($(this).val() == $('#mypassword').val()) {
-        document.getElementById("submit").disabled = false;
+    if ($(this).val() == $('#password').val()) {
         $('#message').html('');
         return true;
     } else{
-       document.getElementById("submit").disabled = true;
-       $('#message').html("<div class='alert alert-danger alert-dismissible'>\
-       <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>\
-       Password does not match!</div>");
+       $('#message').html(prepareAlert("Password does not match!"));
        return true;
   }
 });
+
+//Password strength check
+$('#password').blur(function(){
+  var password = $(this).val();
+
+  if (checkPasswordStrength(password)) {
+    $('#message').html('');
+    return true;
+  }
+  else
+  {
+    $('#message').html(prepareAlert("Password must alteast 6 character long and must contain at least 1 capital letter,\n\n1 small letter, 1 number and 1 special character.\n\nFor special characters you can pick one of these -,(,!,@,#,$,),%,<,>"));
+    return true;
+  }
+
+})
+
+
+//Email format check
+$('#email').blur(function(){
+  var email = $(this).val();
+
+  if (isEmail(email)) {
+    $('#message').html('');
+    return true;
+  }
+  else
+  {
+    $('#message').html(prepareAlert("Please provide valid email address"));
+    return true;
+  }
+
+})
+
+//All functions
+
+function checkPasswordStrength(password)
+{
+  var regex = new Array();
+  regex.push("[A-Z]"); //Uppercase Alphabet.
+  regex.push("[a-z]"); //Lowercase Alphabet.
+  regex.push("[0-9]"); //Digit.
+  regex.push("[!@#$%^&*]"); //Special Character.
+
+  var passed = 0;
+  for (var i = 0; i < regex.length; i++) {
+      if (new RegExp(regex[i]).test(password)) {
+          passed++;
+      }
+  }
+
+  if (passed < 4 || password.length < 6) {
+    return false;
+  }
+  else
+  {
+    return true;
+  }
+}
+
+function isEmail(email) {
+  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  return regex.test(email);
+}
+
+function prepareAlert(message)
+{
+  return "<div class='alert alert-danger alert-dismissible'>\
+  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>\
+  "+message+"</div>";
+}
