@@ -8,7 +8,6 @@
     <link href="css/bootstrap.css?id=1" rel="stylesheet" media="screen">
     <link href="css/main.css?reload=2113" rel="stylesheet" media="screen">
   </head>
-  
   <body>
     <div class="bg_image"></div>
     <div class="container" style="padding-top:20px">

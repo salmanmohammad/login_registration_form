@@ -8,6 +8,5 @@
     <!-- The AJAX login script -->
     <script src="js/login.js?id1234"></script>
     <script src="js/create.js?time=211"></script>
-  
   </body>
 </html>

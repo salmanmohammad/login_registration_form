@@ -43,6 +43,7 @@
 		if (file_exists($target_file)) {
 			echo json_encode(array("success"=> 0, "message"=> "File already exist."));
 			exit;
+
 			$uploadOk = 0;
 		}
 
@@ -50,13 +51,13 @@
 		if ($_FILES["profile"]["size"] > 500000) {
 			echo json_encode(array("success"=> 0, "message"=> "Sorry, your file is too large"));
 			exit;
+
 			$uploadOk = 0;
 		}
 
 		// Allow certain file formats
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 		&& $imageFileType != "gif" ) {
-			
 			echo json_encode(array("success"=> 0, "message"=> "Sorry, only JPG, JPEG, PNG or GIF files are accpeted"));
 			exit;
 

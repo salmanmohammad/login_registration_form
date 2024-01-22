@@ -9,8 +9,7 @@ class dbactions
         $this->password=""; // Mysql password 
         $this->dbname="login"; // Database name 
         $this->tblname="users"; // Table name
-        $this->salt = "this is assignment" ;// For SHA1 hashing
-        
+        $this->salt = "this is assignment" ;// For SHA1 hashing      
     }
 
     private function getConnection()
@@ -30,7 +29,6 @@ class dbactions
         $username = mysqli_real_escape_string($conn,$username);
         $password = mysqli_real_escape_string($conn,$password);
         $password = sha1($password.$this->salt);
-
 
         $sql = "SELECT * FROM $this->tblname WHERE username=? and password=?";
         $stmt = $conn->prepare($sql); 
@@ -86,8 +84,6 @@ class dbactions
         else
         {
             return 0;
-        }
-				
-				
+        }					
     }
 }
