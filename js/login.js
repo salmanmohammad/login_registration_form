@@ -14,7 +14,6 @@ $(document).ready(function(){
         url: "ajax/checklogin.php",
         data: "username="+username+"&password="+password,
         success: function(html){ 
-          console.log(html);   
           if(html=='true') {
             window.location="index.php";
           }

@@ -72,6 +72,7 @@
 		} else {
 			if (move_uploaded_file($_FILES["profile"]["tmp_name"], $target_file)) {
 				
+				//insert user in database
 				$success=$db_action->signupUser($myusername, $mypassword, $myemail, $img_name);
 
 				if($success)
