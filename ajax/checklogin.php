@@ -1,5 +1,4 @@
 <?php	
-	ob_start();
 	session_start();
 	
 	require '../dbactions.php';
@@ -23,6 +22,4 @@
 		//return the error message
 		echo "<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Wrong Username or Password</div>";
 	}
-
-	ob_end_flush();
 ?>
