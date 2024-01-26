@@ -20,7 +20,7 @@ require('common/header.php');
     <input name="retypepwd" id="retypepwd" type="password" class="form-control no_space" placeholder="Confirm Password">
     <label>Profile Image <span style="color:red">*</span></label>
     <input name="profile" id="profile" type="file" class="form-control" placeholder="Profile">
-    <button name="Submit" id="signup" class="btn btn-lg btn-primary btn-block">Signup</button>
+    <button name="Submit" type="button" id="signup" class="btn btn-lg btn-primary btn-block">Signup</button>
     <p class="action_links"><a href="login.php">Already have account?</a></p>
   </form>   
 <?php 

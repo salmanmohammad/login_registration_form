@@ -13,7 +13,7 @@ require('common/header.php');
     <h2 class="form-signin-heading">Please log in</h2>
     <input name="username" id="username" type="text" class="form-control" placeholder="Username" autofocus>
     <input name="password" id="login_password" type="password" class="form-control" placeholder="Password">
-    <button name="Submit" id="login" class="btn btn-lg btn-primary btn-block">Log in</button>
+    <button name="Submit" type="button" id="login" class="btn btn-lg btn-primary btn-block">Log in</button>
     <p class="action_links">New User? <a href="signup.php">Signup!</a></p>
   </form>
 </div>
