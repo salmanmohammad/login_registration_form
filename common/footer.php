@@ -12,7 +12,7 @@
       <script src="js/login.js?id=12"></script>
     <?php } 
     else{ ?>
-      <script src="js/signup.js?id=125"></script>
+      <script src="js/signup.js?id=126"></script>
     <?php } ?>
   </body>
 </html>

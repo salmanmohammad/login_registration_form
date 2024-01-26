@@ -1,11 +1,9 @@
 $(document).ready(function(){
     
   //Form submit process
-$("#signup").click(function(e){
+$("#signup").click(function(){
 
     document.getElementById("signup").disabled = true;
-
-    e.preventDefault();
 
     var username = $("#username").val();
     var password = $("#password").val();
@@ -115,7 +113,7 @@ $('#password').blur(function(){
 //Email format check
 $('#email').blur(function(){
   var email = $(this).val();
-  
+
   if (isEmail(email)) {
     $('#message').html('');
     return true;
