@@ -15,7 +15,7 @@
   
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="css/main.css" rel="stylesheet" media="screen">
-    <link href="css/dashboard.css?id=12" rel="stylesheet" media="screen">
+    <link href="css/dashboard.css?id=123" rel="stylesheet" media="screen">
   </head>
   <body>
     <div id="throbber" style="display:none; min-height:120px;"></div>
@@ -37,7 +37,7 @@
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
-            <li><?php echo "<img src='uploads/".$_SESSION['profile_image']."' style='width:100px'/>"; ?>
+            <li><?php echo "<img src='uploads/".$_SESSION['profile_image']."' class='profile-image'/>"; ?>
             </li>            
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['username']; ?> <b class="fa fa-angle-down"></b></a>

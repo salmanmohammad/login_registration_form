@@ -2,6 +2,7 @@
 
 class dbactions
 {
+    private $host, $username, $password, $dbname, $tblname, $salt;
     function __construct()
     {
         $this->host="localhost"; // Host name 
