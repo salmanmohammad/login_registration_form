@@ -48,16 +48,26 @@ class dbactions
         }
     }
 
-    public function checkUserExist($userEmail)
+    public function checkUserExist($value, $type="email")
     {
         $conn = $this->getConnection();
 
-        $userEmail = stripslashes($userEmail);	
-        $userEmail = mysqli_real_escape_string($conn,$userEmail);
+        $value = stripslashes($value);	
+        $value = mysqli_real_escape_string($conn,$value);
 
-        $sql = "SELECT * FROM $this->tblname WHERE email=?";
+        if($type == "username")
+        {
+            $where = " username =?";
+        }
+        else
+        {
+            $where = " email =?";
+        }
+
+
+        $sql = "SELECT * FROM $this->tblname WHERE $where";
         $stmt = $conn->prepare($sql); 
-        $stmt->bind_param('s',$userEmail);
+        $stmt->bind_param('s',$value);
         $stmt->execute();
         $result = $stmt->get_result();
         $user = $result->fetch_assoc(); 

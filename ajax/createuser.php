@@ -15,10 +15,16 @@
 	$mypassword = stripslashes($mypassword);
 	$myemail = stripslashes($myemail);	
 
-	$count=$db_action->checkUserExist($myemail);
+	$emailCount = $db_action->checkUserExist($myemail, "email");
 
-	if($count != 0){
-		echo json_encode(array("success"=> 0, "message" => "User with email already exist"));
+	$usernameCount = $db_action->checkUserExist($myusername, "username");
+
+	if($emailCount != 0){
+		echo json_encode(array("success"=> 0, "message" => "User with email already exist. Please use other email address"));
+		exit;
+	}
+	elseif($usernameCount != 0){
+		echo json_encode(array("success"=> 0, "message" => "User with username already exist. Please use other username"));
 		exit;
 	}
 	else {
